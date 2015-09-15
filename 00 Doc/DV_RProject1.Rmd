@@ -1,0 +1,26 @@
+---
+output:
+  html_document:
+    pandoc_args: [
+      "+RTS", "-K64m",
+      "-RTS"
+    ]
+---
+Steps for Project 1
+==================
+
+**The first step for this project is to 
+
+###This is how my Rstudio is configured:
+```{r}
+sessionInfo()
+```
+    
+###The summary and subset of the Titanic data are:
+```{r}
+require("jsonlite")
+require("RCurl")
+df <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?query="select * from titanic where sex is not null"'),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/PDBF15DV.usuniversi01134.oraclecloud.internal', USER='cs329e_crp2426', PASS='orcl_crp2426', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE), ))
+summary(df)
+head(df)
+```{r}
